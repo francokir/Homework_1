@@ -16,7 +16,8 @@ security entre corchetes, el usuario y si el acceso fue denegado etc. (el mensaj
 y es por esto que en la primera funcion le pase el nivel de severidad por int y no string, para no tener las dos 
 funciones con dos parametros que se le pasan y del mismo tipo ambos.
 En el main hice la verificacion con switch cases para que el usuario ingrese por teclado los mensajes y todo
-meti que printee las 5 opciones y por teclado se va seleccionando*/
+meti que printee las 5 opciones y por teclado se va seleccionando que se quiere hacer, si mensaje general, mensaje de error
+acceso de usuario, etc.*/
 
 void logMessage(const string& mensaje, int nivelSeveridad) {
     ofstream logFile("log.txt", ios::app);
@@ -100,14 +101,14 @@ int main() {
             case 3:
                 cout << "Ingrese su usuario a continuación: ";
                 getline(cin, extra);
-                cout << "Ingrese estado de acceso (Access Granted, Access Denied): ";
+                cout << "Ingrese si pudo acceder o no (Access Granted, Access Denied): ";
                 getline(cin, mensaje);
                 logMessage(extra, mensaje);
                 break;
 
             case 4:
                 logMessage("Acceso a puntero nulo", __FILE__, __LINE__);
-                throw runtime_error("Error crítico en runtime.");
+                throw runtime_error("Error en runtime.");
         }
     }
     cout << "Terminamos de testear. Mirar el archivo log.txt\n";
